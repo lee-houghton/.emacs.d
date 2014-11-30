@@ -3,3 +3,10 @@
 
 # Packaging
 .cask
+/.emacs.desktop
+/places
+/backups
+/auto-save-list
+/var
+/.emacs.desktop.lock
+/elpa
