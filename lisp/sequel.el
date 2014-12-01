@@ -25,18 +25,15 @@
          (sql-postgres))))
 
    (defun sql-clear-sqli-buffer ()
-     "Clears the SQLi buffer for the current SQL buffer."
      (interactive)
-     (let ((buf (sql-find-sqli-buffer)))
-       (when (not (bufferp buf))
-         (with-current-buffer buf (erase-buffer)))))
+     (with-current-buffer (sql-find-sqli-buffer) (erase-buffer)))
 
    ;; Clears the SQLi buffer and sends the current SQL buffer contents for execution
    (define-key sql-mode-map (kbd "C-c C-w")
      (lambda ()
        (interactive)
        (sql-clear-sqli-buffer)
-       (when (not (bufferp sql-buffer))
+       (when (null sql-buffer)
          (setq sql-buffer (sql-find-sqli-buffer)))
        (sql-send-buffer)))
 
@@ -47,9 +44,11 @@
        (interactive)
        (let* ((function-name (thing-at-point 'symbol))
               (cmd (concat "select oid::regproc as name,
-                               pg_catalog.pg_get_function_arguments(oid) as args
-                         from pg_proc
-                         where proname = lower('" function-name "');")))
+                                pg_catalog.pg_get_function_arguments(oid) as args
+                            from pg_proc
+                            where proname = lower('" function-name "');")))
+		 (when (not (bufferp sql-buffer))
+		   (setq sql-buffer (sql-find-sqli-buffer)))
          (sql-send-string cmd))))
 
 
@@ -58,4 +57,6 @@
        (interactive)
        (let* ((table-name (thing-at-point 'symbol))
               (cmd (concat "select table_name, column_name, data_type, column_default, character_maximum_length as len from information_schema.columns where table_name = '" table-name "' order by ordinal_position;")))
+		 (when (not (bufferp sql-buffer))
+		   (setq sql-buffer (sql-find-sqli-buffer)))
          (sql-send-string cmd))))))

@@ -10,6 +10,7 @@
 (tool-bar-mode 0)
 (electric-layout-mode 0)
 (setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq inhibit-startup-screen t)
 
 ;; Turn on some useful things.
