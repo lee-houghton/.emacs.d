@@ -1,5 +1,8 @@
 ;; Lee-specific stuff.
 
+(require 'undo-tree)
+(global-undo-tree-mode)
+
 (global-set-key
  (kbd "<f12>")
  (lambda ()
@@ -21,10 +24,10 @@
 ;; F8 removes tabs from the buffer.
 ;; F9 toggles white space viewing.
 (global-set-key
- (kbd "<f8>")
+ (kbd "<f7>")
  (lambda ()
    (interactive)
-   (tabify (point-min) (point-max))))
+   (untabify (point-min) (point-max))))
 
-(global-set-key (kbd "<f9>") 'whitespace-mode)
+(global-set-key (kbd "<f8>") 'whitespace-mode)
 
