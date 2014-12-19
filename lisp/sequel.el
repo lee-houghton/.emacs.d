@@ -6,6 +6,8 @@
  'sql-mode-hook
  (lambda ()
    (sql-highlight-postgres-keywords)
+
+   (highlight-regexp "\\b_\\sw+\\b" 'font-lock-variable-name-face)
    
    (define-key sql-mode-map (kbd "<f5>")
      (lambda ()
@@ -19,9 +21,9 @@
    (define-key sql-mode-map (kbd "<f9>")    
      (lambda ()
        (interactive)
-       (let ((sql-server "localhost")
+              (let ((sql-server "ctgtesting-serv")
              (sql-database "portal")
-             (sql-postgres-options '("-U" "lee")))
+             (sql-postgres-options '("-U" "admin")))
          (sql-postgres))))
 
    (defun sql-clear-sqli-buffer ()
@@ -56,7 +58,8 @@
      (lambda ()
        (interactive)
        (let* ((table-name (thing-at-point 'symbol))
-              (cmd (concat "select table_name, column_name, data_type, column_default, character_maximum_length as len from information_schema.columns where table_name = '" table-name "' order by ordinal_position;")))
+              (cmd (concat "select table_name, column_name, data_type, column_default, character_maximum_length as len, is_nullable from information_schema.columns where table_name = '" table-name "' order by ordinal_position;")))
 		 (when (not (bufferp sql-buffer))
 		   (setq sql-buffer (sql-find-sqli-buffer)))
          (sql-send-string cmd))))))
+
