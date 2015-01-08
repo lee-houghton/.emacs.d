@@ -22,6 +22,7 @@
 (require 'saveplace)
 (delete-selection-mode t)
 (toggle-save-place-globally t)
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;; Default settings.
 (setq default-tab-width 4)
@@ -38,10 +39,8 @@
 (setq user-full-name "Lee Houghton")
 (setq user-mail-address "lee@theconnectgroup.net")
 
-;; Theme.
-(load-theme 'gruvbox t)
-
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(dolist (f '("css" "editing" "er" "haskell" "html" "js" "keys" "markdown" "mc" "sublime" "batch" "sequel"))
+(dolist (f '("css" "editing" "er" "haskell" "html" "js" "keys" "markdown" "mc" "sublime" "batch" "sequel" "yas" "brogrammer-theme"))
   (load-file (concat "~/.emacs.d/lisp/" f ".el")))
+
