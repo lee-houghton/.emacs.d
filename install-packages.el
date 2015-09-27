@@ -12,5 +12,5 @@
 	     keyfreq lorem-ipsum magit mark-multiple markdown-mode
 	     multiple-cursors nyan-mode nyan-prompt pgdevenv rainbow-mode
 	     scss-mode unbound web-mode zencoding-mode undo-tree dos
-         csharp-mode))
+         csharp-mode yasnippet))
   (package-install p))

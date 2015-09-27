@@ -11,3 +11,4 @@
 (add-hook 'web-mode-hook 'zencoding-mode)
 
 (define-key web-mode-map (kbd "C-c C-r") 'web-mode-element-rename)
+(define-key web-mode-map (kbd "C-c /") 'web-mode-element-close)

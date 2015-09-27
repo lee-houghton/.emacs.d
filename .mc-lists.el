@@ -4,7 +4,12 @@
 (setq mc/cmds-to-run-for-all
       '(
         coffee-dedent-line-backspace
+        electric-pair-delete-pair
         indent-for-tab-command
-        kill-region
-        upcase-region
+        zencoding-expand-line
+        ))
+
+(setq mc/cmds-to-run-once
+      '(
+        js2-mode-show-node
         ))
