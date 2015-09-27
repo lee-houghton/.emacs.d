@@ -3,7 +3,8 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-        indent-for-tab-command
-        upcase-region
         coffee-dedent-line-backspace
+        indent-for-tab-command
+        kill-region
+        upcase-region
         ))

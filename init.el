@@ -4,6 +4,12 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; Much nicer than Helm!
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(defadvice ido-find-file (before auto-refresh-ido nil activate)
+  (setq ido-rescan t))
+(when (equal system-type 'windows-nt)
+  (setq ido-max-dir-file-cache 0)) ; caching unreliable
 (ido-mode t)
 
 ;; Turn off annoying things.
@@ -12,6 +18,7 @@
 (setq indent-tabs-mode nil)
 (setq-default indent-tabs-mode nil)
 (setq inhibit-startup-screen t)
+(setq create-lockfiles nil) ;; Stupid .# lock files
 
 ;; Turn on some useful things.
 (electric-indent-mode t)
