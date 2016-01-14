@@ -20,6 +20,9 @@
 (setq inhibit-startup-screen t)
 (setq create-lockfiles nil) ;; Stupid .# lock files
 
+;; Turn off some annoying default snippets
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+
 ;; Turn on some useful things.
 (electric-indent-mode t)
 (electric-pair-mode t)
@@ -30,6 +33,7 @@
 (delete-selection-mode t)
 (toggle-save-place-globally t)
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 ;; Default settings.
 (setq default-tab-width 4)
@@ -48,7 +52,24 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(dolist (f '("css" "editing" "er" "haskell" "html" "js" "keys" "markdown" "mc" "sublime" "batch" "sequel" "yas" "brogrammer-theme"))
+(dolist (f '("coffee" "css" "editing" "er" "haskell" "html" "js2-stuff" "keys" "markdown" "mc" "sublime" "batch" "sequel" "yas" "brogrammer-theme"))
   (load-file (concat "~/.emacs.d/lisp/" f ".el")))
 
 (put 'downcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(custom-safe-themes
+   (quote
+    ("806d8c827b214f5f60348114bd27c6dcb5d19047f7ac482ad61e8077a6c5ea60" default)))
+ '(sql-connection-alist
+   (quote
+    (("portal"
+      (sql-product
+       (quote postgres))
+      (sql-user "admin")
+      (sql-database "portal")
+      (sql-server "ctgtesting-serv"))))))

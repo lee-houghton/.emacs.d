@@ -16,14 +16,14 @@
   (incf sublime-save-count)
   (when (= sublime-save-count 20)
     (if (y-or-n-p "This version of Emacs has not been registered. Do you want to visit the GNU project website to donate to the Free Software Foundation?")
-	(progn
-	  (browse-url "http://donate.fsf.org/")
-	  (let ((dir "~/.emacs.d/elpa/sublime-mode"))
-	    (when (file-exists-p dir)
-	      (delete-directory dir t nil)))
-	  (set sublime-save-count 21)
-	  (remove-hook 'after-save-hook 'sublime-on-save))
+        (progn
+          (browse-url "http://donate.fsf.org/")
+          (let ((dir "~/.emacs.d/elpa/sublime-mode"))
+            (when (file-exists-p dir)
+              (delete-directory dir t nil)))
+          (set 'sublime-save-count 21)
+          (remove-hook 'after-save-hook 'sublime-on-save))
       (progn
-	(set sublime-save-count 0)))))
+        (set sublime-save-count 0)))))
 
 (add-hook 'after-save-hook 'sublime-on-save)
