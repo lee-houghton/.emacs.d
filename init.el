@@ -51,3 +51,4 @@
 (dolist (f '("css" "editing" "er" "haskell" "html" "js" "keys" "markdown" "mc" "sublime" "batch" "sequel" "yas" "brogrammer-theme"))
   (load-file (concat "~/.emacs.d/lisp/" f ".el")))
 
+(put 'downcase-region 'disabled nil)

@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         coffee-dedent-line-backspace
+        downcase-region
         electric-pair-delete-pair
         indent-for-tab-command
         zencoding-expand-line
