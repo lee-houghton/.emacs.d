@@ -52,7 +52,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(dolist (f '("coffee" "css" "editing" "er" "haskell" "html" "js2-stuff" "keys" "markdown" "mc" "sublime" "batch" "sequel" "yas" "brogrammer-theme"))
+(dolist (f '("coffee" "css" "editing" "er" "haskell" "html" "js2-stuff" "keys" "markdown" "mc" "sublime" "batch" "sequel" "brogrammer-theme"))
   (load-file (concat "~/.emacs.d/lisp/" f ".el")))
 
 (put 'downcase-region 'disabled nil)
